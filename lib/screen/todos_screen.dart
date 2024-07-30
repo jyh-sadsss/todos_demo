@@ -87,7 +87,11 @@ class _TodosScreenState extends State<TodosScreen> {
             itemBuilder: (context, index) {
               final todo = todos[index]; // 下标
               return TodoListTile(
+                  itemKey: Key(todo.id), // key
                   todo: todo,
+                  onDelete: () {
+                    todosApi.delete(todo.id);
+                  },
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
